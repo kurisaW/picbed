@@ -1,0 +1,23 @@
+name: File Count Reminder
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs every day at midnight UTC
+
+jobs:
+  count-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10' # Replace with the desired Python version
+
+      - name: Count files and send email
+        run: |
+          pip install -r requirements.txt
+          python send_email.py ${{ secrets.GITHUB_TOKEN }}
