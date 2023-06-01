@@ -1,1 +1,1 @@
-pycopy-smtplib
+secure-smtplib
