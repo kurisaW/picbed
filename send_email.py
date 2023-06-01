@@ -34,11 +34,13 @@ def send_email(github_token, recipient, file_count):
 repository_path = '.'  # Replace with the path to your repository if needed
 file_limit = 999
 
-file_count = count_files(repository_path)
+file_count = count_files(repository_path)  
 if file_count > file_limit:
     github_token = os.environ.get('INPUT_GITHUB_TOKEN')
-    default_email = os.environ.get('GITHUB_ACTOR') + '@users.noreply.github.com'
-
-    send_email(github_token, default_email, file_count)
+    if github_token is None:
+        print("Error: Please set the environment variable INPUT_GITHUB_TOKEN.")
+    else:
+        default_email = os.environ.get('GITHUB_ACTOR') + '@users.noreply.github.com'
+        send_email(github_token, default_email, file_count)
 else:
     print("The repository has", file_count, "files. No reminder needed.")
