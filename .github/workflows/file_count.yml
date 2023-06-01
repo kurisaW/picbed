@@ -27,4 +27,4 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-          python send_email.py ${{ secrets.INPUT_GITHUB_TOKEN  }}
+          python send_email.py ${{ secrets.INPUT_GITHUB_TOKEN }}
