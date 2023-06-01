@@ -43,4 +43,4 @@ if file_count > file_limit:
         default_email = os.environ.get('GITHUB_ACTOR') + '@users.noreply.github.com'
         send_email(github_token, default_email, file_count)
 else:
-    print("The repository has", file_count, "files. No reminder needed.")
+    print("The repository has", file_count, "files. No reminder needed.") 
